@@ -1,0 +1,151 @@
+//Structs
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+/*
+    add code for struct here.
+*/
+struct Student
+{
+    int age;
+    string first_name;
+    string last_name;
+    int standard;
+}st;
+
+int main() {
+    
+    
+    cin >> st.age >> st.first_name >> st.last_name >> st.standard;
+    cout << st.age << " " << st.first_name << " " << st.last_name << " " << st.standard;
+    
+    return 0;
+}
+
+
+//Box it!
+
+#include<bits/stdc++.h>
+
+using namespace std;
+class Box
+{
+    int length,breadth,height;
+    public:
+    Box()
+    {
+        length=0;
+        breadth=0;
+        height=0;
+    }
+    Box(int l,int b,int h)
+    {
+        length=l;
+        breadth=b;
+        height=h;
+    }
+    Box(Box &b)
+    {
+        length=b.length;
+        breadth=b.breadth;
+        height=b.height;
+    }
+    int getLength()
+    {
+        return length;
+    }
+    int getHeight()
+    {
+        return height;
+    }
+    int getBreadth()
+    {
+        return breadth;
+    }
+    long long CalculateVolume()
+    {
+        return (long long)length*breadth*height;
+    }
+    bool operator<(Box &b)
+    {
+        bool a=true;
+
+        if(length<b.length )
+        return a;
+
+        else if(breadth<b.breadth&&length==b.length)
+        return a;
+
+        else if(height<b.height&&breadth<b.breadth&&length<b.length)
+        return a;
+
+        else
+        return false;
+        }
+         
+    friend ostream& operator<< (ostream& output, const Box& B)
+    {
+        output << B.length << " " << B.breadth << " " << B.height;
+        return output;
+    }
+
+};
+
+
+void check2()
+{
+	int n;
+	cin>>n;
+	Box temp;
+	for(int i=0;i<n;i++)
+	{
+		int type;
+		cin>>type;
+		if(type ==1)
+		{
+			cout<<temp<<endl;
+		}
+		if(type == 2)
+		{
+			int l,b,h;
+			cin>>l>>b>>h;
+			Box NewBox(l,b,h);
+			temp=NewBox;
+			cout<<temp<<endl;
+		}
+		if(type==3)
+		{
+			int l,b,h;
+			cin>>l>>b>>h;
+			Box NewBox(l,b,h);
+			if(NewBox<temp)
+			{
+				cout<<"Lesser\n";
+			}
+			else
+			{
+				cout<<"Greater\n";
+			}
+		}
+		if(type==4)
+		{
+			cout<<temp.CalculateVolume()<<endl;
+		}
+		if(type==5)
+		{
+			Box NewBox(temp);
+			cout<<NewBox<<endl;
+		}
+
+	}
+}
+
+int main()
+{
+	check2();
+}
